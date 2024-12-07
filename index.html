@@ -7,8 +7,8 @@
 </head>
 <body>
     <script>
-    const humanSelection = getHumanChoice()
-    const computerSelection = getComputerChoice()
+    let humanSelection = getHumanChoice()
+    let computerSelection = getComputerChoice()
     
     function playGame(humanChoice, computerChoice) {
         let humanScore = 0
@@ -19,26 +19,26 @@
                 (humanChoice === "rock") & (computerChoice === "scissors") ||
                 (humanChoice === "scissors") & (computerChoice === "paper") ||
                 (humanChoice === "paper") & (computerChoice === "rock") ) {
-                console.log("CONGRATULATIONS!! YOU WIN!");
+                console.log("You chose " + humanChoice + ". The computer chose " + computerChoice + ". CONGRATULATIONS!! YOU WIN!");
                 humanScore++
                 console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
             }
             else if (humanChoice === computerChoice) {
-                console.log("A TIE?!?!?! +1 FOR BOTH!!")
+                console.log("You chose " + humanChoice + ". The computer chose " + computerChoice +  ". A TIE?!?!?! +1 FOR BOTH!!")
                 console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
                 humanScore++;
                 computerScore++
             }
             else {
-                console.log("BOOOO YOU LOSE!!!");
+                console.log("You chose " + humanChoice + ". The computer chose " + computerChoice + ". BOOOO YOU LOSE!!!");
                 computerScore++;
                 console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
             }
         }
         function letsGo(humanChoice, computerChoice) {
             playRound(humanChoice,computerChoice);
-            getHumanChoice();
-            getComputerChoice()
+            humanChoice = getHumanChoice();
+            computerChoice = getComputerChoice()
         }
         letsGo(humanChoice, computerChoice);
         letsGo(humanChoice, computerChoice);
