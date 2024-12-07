@@ -15,13 +15,7 @@
             playRound();
             playRound();
             playRound();
-            if (humanScore > computerScore) {
-                console.log("Congrats. You win.")
-            }
-            else {
-                console.log("Unfortunately, you lose.")
-            }
-            }
+        }
         function playRound() {
             let humanChoice = getHumanChoice();
             let computerChoice = getComputerChoice();
@@ -73,7 +67,7 @@
                         }
                     }
 
-        playGame()
+        console.log(playGame())
     </script>
 </body>
 </html>
