@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let humanScore = 0
+        let computerScore = 0
+
+        function getComputerChoice() {
+            let choice = Math.random();
+            if(choice<0.33) {
+                return "rock" 
+            }
+            else if (choice>0.66) {
+                return "paper"
+            }
+            else {return "scissors"}
+            }
+           
+
+            // PPOMPT human to get choice
+            // RETURN human choice
+        function getHumanChoice() {
+                let human = prompt("Rock, Paper, or Scissors?");
+                switch(human.toLowerCase()) {
+                    case "rock":
+                        return "rock";
+                        break;
+                    case "paper":
+                        return "paper";
+                        break;
+                    case "scissors":
+                        return "scissors";
+                        break;
+                    default:
+                       return getHumanChoice()
+        }
+    }
+
+        // GET human choice
+        // INITIALIZE into variable
+        // GET computer choice
+        // INITIALIZE into variable
+        // COMPARE variables and write their potential results
+        // LOG winner annoucement
+        // INCREMENT score for correct winner
+
+        function playRound(humanSelection, computerSelection) {
+            if ((humanChoice === "rock") & (computerChoice === "scissors")) {
+                console.log("CONGRATULATIONS!! YOU WIN!");
+                humanScore++
+                console.log("YOU HAVE ", + humanScore, + "points. The computer has ", + computerScore, "points. Catch up!")
+            }
+            else {
+                console.log("BOOOO YOU LOSE");
+                computerScore++;
+                console.log("YOU HAVE ", + humanScore, + "points. The computer has ", + computerScore, "points. Catch up!")
+            }
+        }
+
+        const humanSelection = getHumanChoice()
+        const computerSelection = getComputerChoice()
+
+        console.log(humanSelection, computerSelection)
+
+        
+        
+    </script>
+</body>
+</html>
