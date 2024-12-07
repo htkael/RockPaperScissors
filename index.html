@@ -7,75 +7,74 @@
 </head>
 <body>
     <script>
-        function getComputerChoice() {
-            let choice = Math.random();
-            if(choice<0.33) {
-                return "rock" 
+    const humanSelection = getHumanChoice()
+    const computerSelection = getComputerChoice()
+    
+    function playGame(humanChoice, computerChoice) {
+        let humanScore = 0
+        let computerScore = 0
+        
+        function playRound(humanChoice, computerChoice) {
+            if (
+                (humanChoice === "rock") & (computerChoice === "scissors") ||
+                (humanChoice === "scissors") & (computerChoice === "paper") ||
+                (humanChoice === "paper") & (computerChoice === "rock") ) {
+                console.log("CONGRATULATIONS!! YOU WIN!");
+                humanScore++
+                console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
             }
-            else if (choice>0.66) {
-                return "paper"
+            else if (humanChoice === computerChoice) {
+                console.log("A TIE?!?!?! +1 FOR BOTH!!")
+                console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
+                humanScore++;
+                computerScore++
             }
-            else {return "scissors"}
+            else {
+                console.log("BOOOO YOU LOSE!!!");
+                computerScore++;
+                console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
             }
-           
-
-            // PPOMPT human to get choice
-            // RETURN human choice
-        function getHumanChoice() {
-                let human = prompt("Rock, Paper, or Scissors?");
-                switch(human.toLowerCase()) {
-                    case "rock":
-                        return "rock";
-                        break;
-                    case "paper":
-                        return "paper";
-                        break;
+        }
+        function letsGo(humanChoice, computerChoice) {
+            playRound(humanChoice,computerChoice);
+            getHumanChoice();
+            getComputerChoice()
+        }
+        letsGo(humanChoice, computerChoice);
+        letsGo(humanChoice, computerChoice);
+        letsGo(humanChoice, computerChoice);
+        letsGo(humanChoice, computerChoice);
+        playRound(humanChoice, computerChoice);
+    }
+    console.log(playGame(humanSelection, computerSelection))
+    
+    function getComputerChoice() {
+        let choice = Math.random();
+        if(choice<0.33) {
+            return "rock" 
+        }
+        else if (choice>0.66) {
+            return "paper"
+        }
+        else {return "scissors"}
+    }
+    function getHumanChoice() {
+        let human = prompt("Rock, Paper, or Scissors?");
+        switch(human.toLowerCase()) {
+            case "rock":
+                return "rock";
+                break;
+                case "paper":
+                    return "paper";
+                    break;
                     case "scissors":
                         return "scissors";
                         break;
-                    default:
-                       return getHumanChoice()
-        }
-    }
-
-        // GET human choice
-        // INITIALIZE into variable
-        // GET computer choice
-        // INITIALIZE into variable
-        // COMPARE variables and write their potential results
-        // LOG winner annoucement
-        // INCREMENT score for correct winner
-
-        
-        const humanSelection = getHumanChoice()
-        const computerSelection = getComputerChoice()
-        
-        function playGame(humanChoice, computerChoice) {
-            let humanScore = 0
-            let computerScore = 0
-
-            function playRound(humanChoice, computerChoice) {
-                if ((humanChoice === "rock") & (computerChoice === "scissors")) {
-                    console.log("CONGRATULATIONS!! YOU WIN!");
-                    humanScore++
-                    console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
-                }
-                else {
-                    console.log("BOOOO YOU LOSE!!!");
-                    computerScore++;
-                    console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
-                }
-            }
-            playRound(humanChoice, computerChoice);
-            playRound(humanChoice, computerChoice);
-            playRound(humanChoice, computerChoice);
-            playRound(humanChoice, computerChoice);
-            playRound(humanChoice, computerChoice);
-        }
-        console.log(playGame(humanSelection, computerSelection))
-
-        
-        
+                        default:
+                            return getHumanChoice()
+                        }
+                    }
+    
     </script>
 </body>
 </html>
