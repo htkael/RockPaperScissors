@@ -7,9 +7,6 @@
 </head>
 <body>
     <script>
-        let humanScore = 0
-        let computerScore = 0
-
         function getComputerChoice() {
             let choice = Math.random();
             if(choice<0.33) {
@@ -49,23 +46,33 @@
         // LOG winner annoucement
         // INCREMENT score for correct winner
 
-        function playRound(humanSelection, computerSelection) {
-            if ((humanChoice === "rock") & (computerChoice === "scissors")) {
-                console.log("CONGRATULATIONS!! YOU WIN!");
-                humanScore++
-                console.log("YOU HAVE ", + humanScore, + "points. The computer has ", + computerScore, "points. Catch up!")
-            }
-            else {
-                console.log("BOOOO YOU LOSE");
-                computerScore++;
-                console.log("YOU HAVE ", + humanScore, + "points. The computer has ", + computerScore, "points. Catch up!")
-            }
-        }
-
+        
         const humanSelection = getHumanChoice()
         const computerSelection = getComputerChoice()
+        
+        function playGame(humanChoice, computerChoice) {
+            let humanScore = 0
+            let computerScore = 0
 
-        console.log(humanSelection, computerSelection)
+            function playRound(humanChoice, computerChoice) {
+                if ((humanChoice === "rock") & (computerChoice === "scissors")) {
+                    console.log("CONGRATULATIONS!! YOU WIN!");
+                    humanScore++
+                    console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
+                }
+                else {
+                    console.log("BOOOO YOU LOSE!!!");
+                    computerScore++;
+                    console.log("YOU HAVE " + humanScore + " The computer has " + computerScore)
+                }
+            }
+            playRound(humanChoice, computerChoice);
+            playRound(humanChoice, computerChoice);
+            playRound(humanChoice, computerChoice);
+            playRound(humanChoice, computerChoice);
+            playRound(humanChoice, computerChoice);
+        }
+        console.log(playGame(humanSelection, computerSelection))
 
         
         
