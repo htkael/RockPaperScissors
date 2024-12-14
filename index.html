@@ -46,8 +46,10 @@
       buttonScissors.addEventListener("click", playRound);
       resetButton.addEventListener("click", restartGame);
 
-      playerScore.textContent = humanScore;
-      player2Score.textContent = computerScore;
+      function setScore() {
+        playerScore.textContent = humanScore;
+        player2Score.textContent = computerScore;
+      }
 
       function playRound(event) {
         let humanChoice = event.target;
@@ -73,8 +75,7 @@
           computerScore++;
           results.textContent = "WOMP WOMP. COMPUTER GETS ONE POINT!";
         }
-        playerScore.textContent = humanScore;
-        player2Score.textContent = computerScore;
+        setScore();
         if (humanScore === 5) {
           body.insertBefore(shutDown, body.secondDiv);
 
@@ -85,8 +86,7 @@
         } else if (computerScore === 5) {
           endGame.textContent =
             "BOOOOO!!! YOU LOOSE. YOU SUCK. THE COMPUTER BEAT YOU! GAME RESET.";
-          playerScore.textContent = humanScore;
-          player2Score.textContent = computerScore;
+          setScore();
           shutDown.remove();
           gameOver.append(resetButton);
         }
@@ -107,8 +107,7 @@
         resetButton.remove();
         humanScore = 0;
         computerScore = 0;
-        playerScore.textContent = humanScore;
-        player2Score.textContent = computerScore;
+        setScore();
       }
     </script>
   </body>
