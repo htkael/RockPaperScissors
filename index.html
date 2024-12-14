@@ -19,7 +19,7 @@
         <div id="player2Score"></div>
       </div>
     </div>
-    <div>
+    <div id="reset">
       <h1 id="endGame"></h1>
     </div>
     <script>
@@ -31,25 +31,18 @@
       const player2Score = document.querySelector("#player2Score");
       const endGame = document.querySelector("#endGame");
       const shutDown = document.querySelector(".delete");
+      const gameOver = document.querySelector("#reset");
+      const resetButton = document.createElement("button");
+
+      resetButton.textContent = "RESET GAME";
+
       let humanScore = 0;
       let computerScore = 0;
 
       buttonRock.addEventListener("click", playRound);
       buttonPaper.addEventListener("click", playRound);
       buttonScissors.addEventListener("click", playRound);
-      // function playGame() {
-      //   // playRound();
-      //   // playRound();
-      //   // playRound();
-      //   // playRound();
-      //   // playRound();
-      //   if (humanScore > computerScore) {
-      //     console.log("Congrats. You win.");
-      //   } else {
-      //     console.log("Unfortunately, you lose.");
-      //     //
-      //   }
-      // }
+
       function playRound(event) {
         let humanChoice = event.target;
         let computerChoice = getComputerChoice();
@@ -82,12 +75,14 @@
           humanScore = 0;
           computerScore = 0;
           shutDown.remove();
+          gameOver.append(resetButton);
         } else if (computerScore === 5) {
           endGame.textContent =
             "BOOOOO!!! YOU LOOSE. YOU SUCK. THE COMPUTER BEAT YOU! GAME RESET.";
           humanScore = 0;
           computerScore = 0;
           shutDown.remove();
+          gameOver.append(resetButton);
         }
       }
       function getComputerChoice() {
