@@ -16,14 +16,18 @@
       <h1>SCORE</h1>
       <div id="scores">
         <div id="playerScore"></div>
-        <div id="computerScore"></div>
+        <div id="player2Score"></div>
       </div>
     </div>
+    <h1 id="endGame"></h1>
     <script>
       const buttonRock = document.querySelector("#buttonRock");
       const buttonPaper = document.querySelector("#buttonPaper");
       const buttonScissors = document.querySelector("#buttonScissors");
       const results = document.querySelector("#results");
+      const playerScore = document.querySelector("#playerScore");
+      const player2Score = document.querySelector("#player2Score");
+      const endGame = document.querySelector("#endGame");
       let humanScore = 0;
       let computerScore = 0;
 
@@ -53,7 +57,7 @@
           (humanChoice.id === "buttonPaper") & (computerChoice === "rock")
         ) {
           humanScore++;
-          results.textContent = "YOU WIN! PLUS ONE POINT";
+          results.textContent = "YOU WIN THIS ROUND! PLUS ONE POINT";
         } else if (
           (humanChoice.id === "buttonRock") & (computerChoice === "rock") ||
           (humanChoice.id === "buttonPaper") & (computerChoice === "paper") ||
@@ -66,6 +70,19 @@
         } else {
           computerScore++;
           results.textContent = "WOMP WOMP. COMPUTER GETS ONE POINT!";
+        }
+        playerScore.textContent = humanScore;
+        player2Score.textContent = computerScore;
+        if (humanScore === 5) {
+          endGame.textContent =
+            "WOW! CONGRATULATIONS YOU WIN! RUB IT IN THEIR FACE. GAME RESET";
+          humanScore = 0;
+          computerScore = 0;
+        } else if (computerScore === 5) {
+          endGame.textContent =
+            "BOOOOO!!! YOU LOOSE. YOU SUCK. THE COMPUTER BEAT YOU! GAME RESET.";
+          humanScore = 0;
+          computerScore = 0;
         }
       }
       function getComputerChoice() {
