@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body id="parent">
     <div class="delete">
       <button id="buttonRock">Rock</button>
       <button id="buttonPaper">Paper</button>
@@ -23,10 +23,12 @@
       <h1 id="endGame"></h1>
     </div>
     <script>
+      const body = document.querySelector("#parent");
       const buttonRock = document.querySelector("#buttonRock");
       const buttonPaper = document.querySelector("#buttonPaper");
       const buttonScissors = document.querySelector("#buttonScissors");
       const results = document.querySelector("#results");
+      const secondDiv = document.querySelector("#score");
       const playerScore = document.querySelector("#playerScore");
       const player2Score = document.querySelector("#player2Score");
       const endGame = document.querySelector("#endGame");
@@ -42,6 +44,10 @@
       buttonRock.addEventListener("click", playRound);
       buttonPaper.addEventListener("click", playRound);
       buttonScissors.addEventListener("click", playRound);
+      resetButton.addEventListener("click", restartGame);
+
+      playerScore.textContent = humanScore;
+      player2Score.textContent = computerScore;
 
       function playRound(event) {
         let humanChoice = event.target;
@@ -70,17 +76,17 @@
         playerScore.textContent = humanScore;
         player2Score.textContent = computerScore;
         if (humanScore === 5) {
+          body.insertBefore(shutDown, body.secondDiv);
+
           endGame.textContent =
             "WOW! CONGRATULATIONS YOU WIN! RUB IT IN THEIR FACE. GAME RESET";
-          humanScore = 0;
-          computerScore = 0;
           shutDown.remove();
           gameOver.append(resetButton);
         } else if (computerScore === 5) {
           endGame.textContent =
             "BOOOOO!!! YOU LOOSE. YOU SUCK. THE COMPUTER BEAT YOU! GAME RESET.";
-          humanScore = 0;
-          computerScore = 0;
+          playerScore.textContent = humanScore;
+          player2Score.textContent = computerScore;
           shutDown.remove();
           gameOver.append(resetButton);
         }
@@ -94,6 +100,15 @@
         } else {
           return "scissors";
         }
+      }
+      function restartGame() {
+        endGame.textContent = "";
+        body.prepend(shutDown);
+        resetButton.remove();
+        humanScore = 0;
+        computerScore = 0;
+        playerScore.textContent = humanScore;
+        player2Score.textContent = computerScore;
       }
     </script>
   </body>
